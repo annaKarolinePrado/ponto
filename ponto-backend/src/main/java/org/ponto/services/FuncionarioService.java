@@ -19,4 +19,12 @@ public class FuncionarioService {
         funcionario.setUsuarioId(funcionarioDTO.getUsuarioId());
         return funcionario;
     }
+
+    public Funcionario alterarFuncionario(FuncionarioDTO funcionarioDTO){
+        Funcionario funcionario = new Funcionario();
+        funcionario.setId(funcionarioDTO.getId());
+        funcionario.setNome(funcionarioDTO.getNome());
+        funcionario.setUsuarioId(funcionarioDTO.getUsuarioId());
+        return funcionario;
+    }
 }

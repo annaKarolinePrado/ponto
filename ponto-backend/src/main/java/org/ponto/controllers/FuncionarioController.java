@@ -21,7 +21,11 @@ public class FuncionarioController {
 
     @PostMapping()
     public ResponseEntity<Funcionario> criarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
+        return new ResponseEntity<>(funcionarioService.criarFuncionario(funcionarioDTO), HttpStatus.OK);
+    }
 
-        return new ResponseEntity<>(funcionarioService.criarFuncionario(funcionarioDTO), HttpStatus.CREATED);
+    @PutMapping()
+    public ResponseEntity<Funcionario> alterarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
+        return new ResponseEntity<>(funcionarioService.alterarFuncionario(funcionarioDTO), HttpStatus.CREATED);
     }
 }
