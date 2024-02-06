@@ -27,4 +27,5 @@ public class FuncionarioService {
         funcionario.setUsuarioId(funcionarioDTO.getUsuarioId());
         return funcionario;
     }
+
 }
