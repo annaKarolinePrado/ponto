@@ -10,22 +10,22 @@ import java.io.Serializable;
 public class Funcionario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private int usuarioId;
 
     public Funcionario() {
     }
-    public Funcionario(int id, String nome, int usuarioId) {
+    public Funcionario(Long id, String nome, int usuarioId) {
         this.id = id;
         this.nome = nome;
         this.usuarioId = usuarioId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

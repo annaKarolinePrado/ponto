@@ -25,7 +25,7 @@ public class FuncionarioController {
     }
 
     @PutMapping()
-    public ResponseEntity<Funcionario> alterarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
+    public ResponseEntity<Funcionario> alterarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) throws Exception {
         return new ResponseEntity<>(funcionarioService.alterarFuncionario(funcionarioDTO), HttpStatus.CREATED);
     }
 }
