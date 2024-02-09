@@ -6,10 +6,21 @@ import org.ponto.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FuncionarioService {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
+
+    public List<Funcionario> buscarTodosFuncionarios() {
+        return funcionarioRepository.findAll();
+    }
+
+    public Optional<Funcionario> buscarFuncionarioPorId(Long id) {
+        return funcionarioRepository.findById(id);
+    }
 
     public Funcionario criarFuncionario(FuncionarioDTO funcionarioDTO){
         Funcionario funcionario = new Funcionario();
@@ -35,4 +46,7 @@ public class FuncionarioService {
         return funcionario;
     }
 
+    public void excluirFuncionario(Long id) {
+        funcionarioRepository.deleteById(id);
+    }
 }

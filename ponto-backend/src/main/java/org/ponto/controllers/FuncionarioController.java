@@ -8,15 +8,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/ponto/funcionarios")
 public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
     @GetMapping()
-    public FuncionarioDTO getFuncionario() {
-        // Chama o método getFuncionario da classe FuncionarioService
-        return funcionarioService.getFuncionario();
+    public List<Funcionario> buscarTodosFuncionarios() {
+        return funcionarioService.buscarTodosFuncionarios();
+    }
+    @GetMapping("/{id}")
+    public Optional<Funcionario> buscarFuncionarioPorId(@PathVariable Long id) {
+        return funcionarioService.buscarFuncionarioPorId(id);
     }
 
     @PostMapping()
@@ -27,5 +33,9 @@ public class FuncionarioController {
     @PutMapping()
     public ResponseEntity<Funcionario> alterarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) throws Exception {
         return new ResponseEntity<>(funcionarioService.alterarFuncionario(funcionarioDTO), HttpStatus.CREATED);
+    }
+    @DeleteMapping()
+    public void excluirFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
+        funcionarioService.excluirFuncionario(funcionarioDTO.getId());
     }
 }

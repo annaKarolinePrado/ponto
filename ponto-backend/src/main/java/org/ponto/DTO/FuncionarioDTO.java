@@ -5,18 +5,15 @@ public class FuncionarioDTO {
     private Long id;
     private String nome;
     private Integer usuarioId;
-    // Construtor vazio (pode ser omitido se não for necessário)
     public FuncionarioDTO() {
     }
 
-    // Construtor com parâmetros
     public FuncionarioDTO(Long id, String nome, Integer usuarioId) {
         this.id = id;
         this.nome = nome;
         this.usuarioId = usuarioId;
     }
 
-    // Métodos getter e setter para id
     public Long getId() {
         return id;
     }
@@ -24,7 +21,6 @@ public class FuncionarioDTO {
         this.id = id;
     }
 
-    // Métodos getter e setter para nome
     public String getNome() {
         return nome;
     }
@@ -32,7 +28,6 @@ public class FuncionarioDTO {
         this.nome = nome;
     }
 
-    // Métodos getter e setter para usuarioId
     public Integer getUsuarioId() {
         return usuarioId;
     }
