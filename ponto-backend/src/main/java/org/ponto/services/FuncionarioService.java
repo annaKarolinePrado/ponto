@@ -49,4 +49,8 @@ public class FuncionarioService {
     public void excluirFuncionario(Long id) {
         funcionarioRepository.deleteById(id);
     }
+
+    public List<Funcionario> buscarFuncionariosPorNome(String nome) {
+        return funcionarioRepository.findByNome(nome);
+    }
 }

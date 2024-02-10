@@ -38,4 +38,9 @@ public class FuncionarioController {
     public void excluirFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
         funcionarioService.excluirFuncionario(funcionarioDTO.getId());
     }
+
+    @GetMapping("/nome")
+    public List<Funcionario> buscarFuncionariosPorNome(@RequestParam(value="nome", defaultValue = "") String nome) {
+        return funcionarioService.buscarFuncionariosPorNome(nome);
+    }
 }
