@@ -1,38 +1,26 @@
-package org.ponto.models;
+package org.ponto.DTO;
 
-import org.ponto.enums.DiaSemana;
 import org.ponto.enums.TipoAcaoPonto;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Timer;
 
-@Entity
-@Table(name = "pontos")
-public class Ponto {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PontoDTO {
     private Long id;
-
-    @Column(name="banco_horas")
     private Long bancoDeHoras;
     private LocalDateTime dataCriacaoPonto;
     private LocalDate dataPonto;
-    @ManyToOne
-    private Funcionario funcionario;
+    private FuncionarioDTO funcionario;
     private LocalTime minutoPonto;
     private TipoAcaoPonto tipoAcaoPonto;
     private String diaSemanaPonto;
 
-    public Ponto() {
+    public PontoDTO() {
     }
 
-    public Ponto(Long id, Long bancoDeHoras, LocalDateTime dataCriacaoPonto, LocalDate dataPonto, Funcionario funcionario,
-                 LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto, DiaSemana diaSemana) {
-
+    public PontoDTO(Long id, Long bancoDeHoras, LocalDateTime dataCriacaoPonto, LocalDate dataPonto, FuncionarioDTO funcionario,
+                    LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto, String diaSemanaPonto) {
         this.id = id;
         this.bancoDeHoras = bancoDeHoras;
         this.dataCriacaoPonto = dataCriacaoPonto;
@@ -40,7 +28,7 @@ public class Ponto {
         this.funcionario = funcionario;
         this.minutoPonto = minutoPonto;
         this.tipoAcaoPonto = tipoAcaoPonto;
-        this.diaSemanaPonto = diaSemana.toString();
+        this.diaSemanaPonto = diaSemanaPonto;
     }
 
     public Long getId() {
@@ -71,10 +59,10 @@ public class Ponto {
         this.dataPonto = dataPonto;
     }
 
-    public Funcionario getFuncionario() {
+    public FuncionarioDTO getFuncionario() {
         return funcionario;
     }
-    public void setFuncionario(Funcionario funcionario) {
+    public void setFuncionario(FuncionarioDTO funcionario) {
         this.funcionario = funcionario;
     }
 
@@ -92,24 +80,11 @@ public class Ponto {
         this.tipoAcaoPonto = tipoAcaoPonto;
     }
 
-    public DiaSemana getDiaSemanaPonto() {
-        return DiaSemana.valueOf(diaSemanaPonto);
+    public String getDiaSemanaPonto() {
+        return diaSemanaPonto;
     }
-    public void setDiaSemanaPonto(DiaSemana diaSemanaPonto) {
-        this.diaSemanaPonto = diaSemanaPonto.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "Ponto{" +
-                "id=" + id +
-                ", bancoDeHoras=" + bancoDeHoras +
-                ", dataCriacaoPonto=" + dataCriacaoPonto +
-                ", dataPonto=" + dataPonto +
-                ", funcionario=" + funcionario +
-                ", minutoPonto=" + minutoPonto +
-                ", tipoAcaoPonto=" + tipoAcaoPonto +
-                '}';
+    public void setDiaSemanaPonto(String diaSemanaPonto) {
+        this.diaSemanaPonto = diaSemanaPonto;
     }
 }
 

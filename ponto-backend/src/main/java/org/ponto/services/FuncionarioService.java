@@ -38,11 +38,8 @@ public class FuncionarioService {
         return funcionarioAntigo;
     }
 
-    public Funcionario getFuncionarioById(Long funcionarioId) throws Exception {
+    public Funcionario getFuncionarioById(Long funcionarioId) {
         Funcionario funcionario = funcionarioRepository.findById(funcionarioId).get();
-        if(funcionario == null) {
-            throw new Exception("Funcionario não encontrado.");
-        }
         return funcionario;
     }
 
