@@ -8,8 +8,11 @@ import org.ponto.models.Funcionario;
 import org.ponto.models.Ponto;
 import org.ponto.repositories.PontoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,5 +39,11 @@ public class PontoService {
         ponto.setDiaSemanaPonto(DiaSemana.valueOf(pontoDTO.getDiaSemanaPonto()));
         pontoRepository.save(ponto);
         return ponto;
+    }
+
+    public List<Ponto> getPontosDoDiaAtual(){
+        LocalDate dataAtual = LocalDate.now();
+        List<Ponto> pontosDoDia = pontoRepository.findAllByDataPonto(dataAtual);
+        return  pontosDoDia;
     }
 }
