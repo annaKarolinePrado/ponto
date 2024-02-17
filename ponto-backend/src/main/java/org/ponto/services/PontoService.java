@@ -46,4 +46,8 @@ public class PontoService {
         List<Ponto> pontosDoDia = pontoRepository.findAllByDataPonto(dataAtual);
         return  pontosDoDia;
     }
+
+    public void excluirPonto(Long id) {
+        pontoRepository.deleteById(id);
+    }
 }

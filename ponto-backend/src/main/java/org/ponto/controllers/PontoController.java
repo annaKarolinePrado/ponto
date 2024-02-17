@@ -39,4 +39,9 @@ public class PontoController {
         List<Ponto> pontosDoDia = pontoService.getPontosDoDiaAtual();
         return new ResponseEntity<>(pontosDoDia, HttpStatus.OK);
     }
+
+    @DeleteMapping()
+    public void excluirPonto(@RequestBody PontoDTO pontoDTO) {
+        pontoService.excluirPonto(pontoDTO.getId());
+    }
 }
