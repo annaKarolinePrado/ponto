@@ -1,5 +1,7 @@
 package org.ponto.models;
 
+import org.ponto.converters.DiaSemanaConverter;
+import org.ponto.converters.PontoConverter;
 import org.ponto.enums.DiaSemana;
 import org.ponto.enums.TipoAcaoPonto;
 
@@ -24,8 +26,10 @@ public class Ponto {
     @ManyToOne
     private Funcionario funcionario;
     private LocalTime minutoPonto;
+    @Convert(converter = PontoConverter.class)
     private TipoAcaoPonto tipoAcaoPonto;
-    private String diaSemanaPonto;
+    @Convert(converter = DiaSemanaConverter.class)
+    private DiaSemana diaSemanaPonto;
 
     public Ponto() {
     }
@@ -40,7 +44,7 @@ public class Ponto {
         this.funcionario = funcionario;
         this.minutoPonto = minutoPonto;
         this.tipoAcaoPonto = tipoAcaoPonto;
-        this.diaSemanaPonto = diaSemana.toString();
+        this.diaSemanaPonto = diaSemana;
     }
 
     public Long getId() {
@@ -93,10 +97,10 @@ public class Ponto {
     }
 
     public DiaSemana getDiaSemanaPonto() {
-        return DiaSemana.valueOf(diaSemanaPonto);
+        return diaSemanaPonto;
     }
     public void setDiaSemanaPonto(DiaSemana diaSemanaPonto) {
-        this.diaSemanaPonto = diaSemanaPonto.toString();
+        this.diaSemanaPonto = diaSemanaPonto;
     }
 
     @Override

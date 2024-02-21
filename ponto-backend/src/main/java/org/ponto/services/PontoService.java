@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,14 +30,14 @@ public class PontoService {
     public Ponto criarPonto(PontoDTO pontoDTO){
         Ponto ponto = new Ponto();
 
-        ponto.setBancoDeHoras(pontoDTO.getBancoDeHoras());
-        ponto.setDataCriacaoPonto(pontoDTO.getDataCriacaoPonto());
+        ponto.setBancoDeHoras(calcularSaldo());
+        ponto.setDataCriacaoPonto(LocalDateTime.now());
         ponto.setDataPonto(pontoDTO.getDataPonto());
         ponto.setMinutoPonto(pontoDTO.getMinutoPonto());
         Funcionario funcionario = funcionarioService.getFuncionarioById(pontoDTO.getFuncionario().getId());
         ponto.setFuncionario(funcionario);
         ponto.setTipoAcaoPonto(pontoDTO.getTipoAcaoPonto());
-        ponto.setDiaSemanaPonto(DiaSemana.valueOf(pontoDTO.getDiaSemanaPonto()));
+        ponto.setDiaSemanaPonto(pontoDTO.getDiaSemanaPonto());
         pontoRepository.save(ponto);
         return ponto;
     }
@@ -49,5 +50,9 @@ public class PontoService {
 
     public void excluirPonto(Long id) {
         pontoRepository.deleteById(id);
+    }
+
+    private Long calcularSaldo(){
+        return 10L;
     }
 }

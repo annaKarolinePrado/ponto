@@ -1,5 +1,6 @@
 package org.ponto.DTO;
 
+import org.ponto.enums.DiaSemana;
 import org.ponto.enums.TipoAcaoPonto;
 
 import java.time.LocalDate;
@@ -14,13 +15,13 @@ public class PontoDTO {
     private FuncionarioDTO funcionario;
     private LocalTime minutoPonto;
     private TipoAcaoPonto tipoAcaoPonto;
-    private String diaSemanaPonto;
+    private DiaSemana diaSemanaPonto;
 
     public PontoDTO() {
     }
 
     public PontoDTO(Long id, Long bancoDeHoras, LocalDateTime dataCriacaoPonto, LocalDate dataPonto, FuncionarioDTO funcionario,
-                    LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto, String diaSemanaPonto) {
+                    LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto, DiaSemana diaSemanaPonto) {
         this.id = id;
         this.bancoDeHoras = bancoDeHoras;
         this.dataCriacaoPonto = dataCriacaoPonto;
@@ -80,10 +81,10 @@ public class PontoDTO {
         this.tipoAcaoPonto = tipoAcaoPonto;
     }
 
-    public String getDiaSemanaPonto() {
+    public DiaSemana getDiaSemanaPonto() {
         return diaSemanaPonto;
     }
-    public void setDiaSemanaPonto(String diaSemanaPonto) {
+    public void setDiaSemanaPonto(DiaSemana diaSemanaPonto) {
         this.diaSemanaPonto = diaSemanaPonto;
     }
 }
