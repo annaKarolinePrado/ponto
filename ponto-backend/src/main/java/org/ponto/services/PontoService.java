@@ -1,15 +1,10 @@
 package org.ponto.services;
 
-import org.ponto.DTO.FuncionarioDTO;
 import org.ponto.DTO.PontoDTO;
-import org.ponto.enums.DiaSemana;
-import org.ponto.enums.TipoAcaoPonto;
 import org.ponto.models.Funcionario;
 import org.ponto.models.Ponto;
 import org.ponto.repositories.PontoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -53,6 +48,10 @@ public class PontoService {
     }
 
     private Long calcularSaldo(){
-        return 10L;
+        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataBase = dataAtual.minusDays(1);
+        Ponto ultimoPontoComSaldo = pontoRepository.findTop1ByDataPontoBeforeAndBancoDeHorasGreaterThanOrderByIdDesc(dataBase, 0l);
+
+        return ultimoPontoComSaldo.getBancoDeHoras();
     }
 }
