@@ -1,7 +1,12 @@
 package org.ponto.models;
 
+import org.ponto.DTO.CargoDTO;
+import org.ponto.DTO.DepartamentoDTO;
+import org.ponto.DTO.EmpresaDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "funcionarios")
@@ -11,6 +16,20 @@ public class Funcionario implements Serializable {
     private Long id;
     private String nome;
     private int usuarioId;
+    private Double salario;
+    private LocalDate dataNascimento;
+    private String cpf;
+    private String endereco;
+    private String cidade;
+    private String estado;
+    private String cep;
+    private String telefone;
+    private String email;
+    //private Cargo cargo;
+    //private Departamento departamento;
+    private LocalDate data_adimissao;
+    //private Empresa empresa;
+
 
     public Funcionario() {
     }

@@ -16,12 +16,14 @@ public class PontoDTO {
     private LocalTime minutoPonto;
     private TipoAcaoPonto tipoAcaoPonto;
     private DiaSemana diaSemanaPonto;
+    private String observacao;
 
     public PontoDTO() {
     }
 
-    public PontoDTO(Long id, Long bancoDeHoras, LocalDateTime dataCriacaoPonto, LocalDate dataPonto, FuncionarioDTO funcionario,
-                    LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto, DiaSemana diaSemanaPonto) {
+    public PontoDTO(Long id, Long bancoDeHoras, LocalDateTime dataCriacaoPonto, LocalDate dataPonto,
+                    FuncionarioDTO funcionario, LocalTime minutoPonto, TipoAcaoPonto tipoAcaoPonto,
+                    DiaSemana diaSemanaPonto, String observacao) {
         this.id = id;
         this.bancoDeHoras = bancoDeHoras;
         this.dataCriacaoPonto = dataCriacaoPonto;
@@ -30,6 +32,7 @@ public class PontoDTO {
         this.minutoPonto = minutoPonto;
         this.tipoAcaoPonto = tipoAcaoPonto;
         this.diaSemanaPonto = diaSemanaPonto;
+        this.observacao = observacao;
     }
 
     public Long getId() {
@@ -86,6 +89,13 @@ public class PontoDTO {
     }
     public void setDiaSemanaPonto(DiaSemana diaSemanaPonto) {
         this.diaSemanaPonto = diaSemanaPonto;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }
 
